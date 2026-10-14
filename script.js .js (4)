@@ -1,0 +1,117 @@
+function explore() {
+    document.getElementById("services").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+function quote() {
+    document.getElementById("quote").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+function login() {
+    alert("Login page opened");
+}
+function signup() {
+    alert("Registration page opened");
+}
+
+function searchEvent() {
+    let search = document.getElementById("search").value;
+
+    if(search === ""){
+        alert("Please enter event name");
+    }
+    else{
+        alert("Searching for: " + search);
+    }
+}
+
+function submitQuote() {
+    let name = document.getElementById("name").value;
+
+    if(name === ""){
+        alert("Please enter your name");
+    }
+    else{
+        alert("Thank you " + name + "! Your enquiry submitted.");
+    }
+}
+
+function contact() {
+    alert("Contact: 9876543210");
+}
+function filterEvents(){
+
+    let name = document.getElementById("search").value.toLowerCase();
+    let budget = document.getElementById("budget").value;
+
+    let result = document.getElementById("result");
+
+    let events = [
+        {name:"Wedding Event", price:"50000"},
+        {name:"Birthday Party", price:"10000"},
+        {name:"Corporate Event", price:"20000"},
+        {name:"Engagement Function", price:"20000"}
+    ];
+
+    let output="";
+
+    events.forEach(function(event){
+
+        if((event.name.toLowerCase().includes(name)) &&
+          (budget=="" || event.price==budget)){
+
+            output += "<h3>"+event.name+"</h3>";
+            output += "<p>Package Price: ₹"+event.price+"</p>";
+            output += "<hr>";
+        }
+
+    });
+
+    if(output==""){
+        result.innerHTML="No event found";
+    }
+    else{
+        result.innerHTML=output;
+    }
+}
+function showText(box){
+
+    let text = box.querySelector("p");
+
+    if(text.style.display=="block"){
+        text.style.display="none";
+    }
+    else{
+        text.style.display="block";
+    }
+
+}
+function openWhatsApp(){
+    window.open("https://wa.me/916369788119","_blank");
+}
+
+function openEmail(){
+    window.location.href="mailto:pd30122007@gmail.com";
+}
+document.addEventListener("DOMContentLoaded", function () {
+
+    const quoteForm = document.getElementById("quoteForm");
+    const quoteMessage = document.getElementById("quoteMessage");
+
+    if (quoteForm) {
+        quoteForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            quoteMessage.textContent =
+                "Thank you! Your enquiry has been submitted successfully.";
+
+            quoteMessage.style.color = "green";
+
+            quoteForm.reset();
+        });
+    }
+
+});
