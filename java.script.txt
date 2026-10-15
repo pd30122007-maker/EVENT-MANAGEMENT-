@@ -1,0 +1,68 @@
+
+function explore() {
+  document.getElementById("services").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function quote() {
+  document.getElementById("quote").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function showText(element) {
+  const p = element.querySelector("p");
+  if (p) {
+    p.hidden = !p.hidden;
+  }
+}
+
+function filterEvents() {
+  const search = document.getElementById("search").value.toLowerCase();
+  const budget = document.getElementById("budget").value;
+  const result = document.getElementById("result");
+
+  const events = [
+    { name: "Birthday", price: 10000 },
+    { name: "Corporate", price: 20000 },
+    { name: "Wedding", price: 50000 }
+  ];
+
+  const matches = events.filter(event =>
+    event.name.toLowerCase().includes(search) &&
+    (!budget || event.price <= Number(budget))
+  );
+
+  result.textContent = matches.length
+    ? matches.map(e => `${e.name} - ₹${e.price}`).join(" | ")
+    : "No matching events found.";
+}
+
+function submitQuote() {
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+
+  if (!name || !phone) {
+    alert("Please enter your name and phone number.");
+    return;
+  }
+
+  alert("Your quote request details have been checked!");
+}
+
+function login() {
+  alert("Login requires an authentication system.");
+}
+
+function signup() {
+  alert("Sign Up requires a registration system.");
+}
+
+function openWhatsApp() {
+  window.open("https://wa.me/916369788119", "_blank");
+}
+
+function openEmail() {
+  window.location.href = "mailto:";
+}
